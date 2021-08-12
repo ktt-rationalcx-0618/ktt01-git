@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ktt01-dev-adf"
+		},
+		"LS_ktt01_Dev_BlobStorage_properties_typeProperties_connectionString_secretName": {
+			"value": "ktt01-dev-SA-AccessSecret"
+		},
+		"LS_ktt01_Dev_KeyVault_properties_typeProperties_baseUrl": {
+			"value": "https://ktt01-dev-kv-00.vault.azure.net/"
+		}
+	}
+}
