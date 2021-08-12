@@ -1,0 +1,24 @@
+{
+	"name": "DS_ktt01_Dev_Input",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ktt01_Dev_BlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Aus_IND_Sales.csv",
+				"container": "dev-input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

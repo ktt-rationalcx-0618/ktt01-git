@@ -1,0 +1,9 @@
+{
+	"name": "ktt01-dev-adf",
+	"location": "southcentralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1420314e-3c5a-4909-9ef9-13f81ca28e8b",
+		"tenantId": "03f0126b-518e-456c-bac9-346c34f95bd9"
+	}
+}
