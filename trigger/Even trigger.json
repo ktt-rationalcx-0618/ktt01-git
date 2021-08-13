@@ -9,11 +9,21 @@
 					"referenceName": "Event Trigger copy BlobStorage Dev_1 changed to 20_copy1",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "pl_parameter_IO_triggers",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"pl_filename": "@triggerBody().pl_filename"
+				}
 			}
 		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/dev-input/blobs/Aus",
+			"blobPathEndsWith": ".csv",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/9ff82384-d93c-4e95-8e8f-4d5b507efa11/resourceGroups/ktt01-dev-rg/providers/Microsoft.Storage/storageAccounts/ktt01devsa",
 			"events": [
