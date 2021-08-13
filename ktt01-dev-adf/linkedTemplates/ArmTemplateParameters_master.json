@@ -11,10 +11,10 @@
 		"LS_ktt01_Dev_KeyVault_properties_typeProperties_baseUrl": {
 			"value": "https://ktt01-dev-kv-00.vault.azure.net/"
 		},
-		"Even trigger_properties_pl_parameter_IO_triggers_parameters_pl_filename": {
-			"value": "@triggerBody().pl_filename"
+		"ParametersEvenTrigger_properties_pl_parameter_IO_triggers_parameters_filename": {
+			"value": "@triggerBody().filename"
 		},
-		"Even trigger_properties_typeProperties_scope": {
+		"ParametersEvenTrigger_properties_typeProperties_scope": {
 			"value": "/subscriptions/9ff82384-d93c-4e95-8e8f-4d5b507efa11/resourceGroups/ktt01-dev-rg/providers/Microsoft.Storage/storageAccounts/ktt01devsa"
 		},
 		"containerUri": {

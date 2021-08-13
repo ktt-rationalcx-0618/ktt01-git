@@ -15,11 +15,11 @@
 			"type": "string",
 			"defaultValue": "ktt01-dev-SA-AccessSecret"
 		},
-		"Even trigger_properties_pl_parameter_IO_triggers_parameters_pl_filename": {
+		"ParametersEvenTrigger_properties_pl_parameter_IO_triggers_parameters_filename": {
 			"type": "string",
-			"defaultValue": "@triggerBody().pl_filename"
+			"defaultValue": "@triggerBody().filename"
 		},
-		"Even trigger_properties_typeProperties_scope": {
+		"ParametersEvenTrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/9ff82384-d93c-4e95-8e8f-4d5b507efa11/resourceGroups/ktt01-dev-rg/providers/Microsoft.Storage/storageAccounts/ktt01devsa"
 		}
@@ -128,7 +128,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"InputFilename": {
+					"filename": {
 						"type": "string"
 					}
 				},
@@ -161,7 +161,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"OutputFilename": {
+					"filename": {
 						"type": "string"
 					}
 				},
@@ -578,8 +578,8 @@
 								"referenceName": "DS_ktt01_Dev_Parm_Input",
 								"type": "DatasetReference",
 								"parameters": {
-									"InputFilename": {
-										"value": "@pipeline().parameters.pl_filename",
+									"filename": {
+										"value": "@pipeline().parameters.filename",
 										"type": "Expression"
 									}
 								}
@@ -590,8 +590,8 @@
 								"referenceName": "DS_ktt01_Dev_Parm_Output",
 								"type": "DatasetReference",
 								"parameters": {
-									"OutputFilename": {
-										"value": "@pipeline().parameters.pl_filename",
+									"filename": {
+										"value": "@pipeline().parameters.filename",
 										"type": "Expression"
 									}
 								}
@@ -600,7 +600,7 @@
 					}
 				],
 				"parameters": {
-					"pl_filename": {
+					"filename": {
 						"type": "string"
 					}
 				},
@@ -612,7 +612,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Even trigger')]",
+			"name": "[concat(parameters('factoryName'), '/ParametersEvenTrigger')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -632,7 +632,7 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"pl_filename": "[parameters('Even trigger_properties_pl_parameter_IO_triggers_parameters_pl_filename')]"
+							"filename": "[parameters('ParametersEvenTrigger_properties_pl_parameter_IO_triggers_parameters_filename')]"
 						}
 					}
 				],
@@ -641,7 +641,7 @@
 					"blobPathBeginsWith": "/dev-input/blobs/Aus",
 					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('Even trigger_properties_typeProperties_scope')]",
+					"scope": "[parameters('ParametersEvenTrigger_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
