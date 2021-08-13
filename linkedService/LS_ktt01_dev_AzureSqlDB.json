@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=ktt01-dev-sql.database.windows.net;initial catalog=master;user id=keiththai",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIktUVDAxLURFVi1BREZfNGQyOTQxYjgtODlhZC00MzdmLWE2ZDEtOGQxZjc0NWQ5NWFhIg0KfQ=="
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=ktt01-dev-sql.database.windows.net;initial catalog=sample;user id=keiththai",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIktUVDAxLURFVi1BREZfNzcwODBmNDItMzE0MS00OTk2LWJkMjUtMDQwNWY5OTUxODI0Ig0KfQ=="
 		}
 	}
 }
