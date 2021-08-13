@@ -5,6 +5,12 @@
 		"factoryName": {
 			"value": "ktt01-dev-adf"
 		},
+		"LS_ktt01_dev_CosmosDB_connectionString": {
+			"value": ""
+		},
+		"LS_ktt01_dev_AzureSqlDB_connectionString": {
+			"value": ""
+		},
 		"LS_ktt01_Dev_BlobStorage_properties_typeProperties_connectionString_secretName": {
 			"value": "ktt01-dev-SA-AccessSecret"
 		},
