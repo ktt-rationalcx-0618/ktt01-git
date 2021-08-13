@@ -505,7 +505,7 @@
 					"startTime": "2021-08-13T14:00:00Z",
 					"endTime": "2021-08-13T14:15:00Z",
 					"delay": "00:00:00",
-					"maxConcurrency": 50,
+					"maxConcurrency": 5,
 					"retryPolicy": {
 						"count": 3,
 						"intervalInSeconds": 30
