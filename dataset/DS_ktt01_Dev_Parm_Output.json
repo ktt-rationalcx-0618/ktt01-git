@@ -5,6 +5,11 @@
 			"referenceName": "LS_ktt01_Dev_BlobStorage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"InputFilename": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
