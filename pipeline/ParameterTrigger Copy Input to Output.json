@@ -50,17 +50,39 @@
 				"inputs": [
 					{
 						"referenceName": "DS_ktt01_Dev_Input",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"DS_Input_Parm": {
+								"value": "@pipeline().parameters.pl_filename",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "DS_ktt01_Dev_Output",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"DS_Output_Parm": {
+								"value": "@pipeline().parameters.pl_filename",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"pl_filename": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"pl_var": {
+				"type": "String"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-08-12T23:33:37Z"
 	},
