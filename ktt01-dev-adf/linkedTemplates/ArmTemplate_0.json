@@ -115,6 +115,71 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_ktt01_Dev_Parm_Input')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ktt01_Dev_BlobStorage",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"InputFilename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Aus_File_1.csv",
+						"container": "dev-input"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ktt01_Dev_BlobStorage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ktt01_Dev_Parm_Output')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ktt01_Dev_BlobStorage",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"OutputFilename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "dev-output"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ktt01_Dev_BlobStorage')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Copy BlobStorage Dev_1 changed to 20')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -216,119 +281,6 @@
 						"userProperties": [],
 						"typeProperties": {
 							"waitTimeInSeconds": 20
-						}
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-08-12T23:33:37Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_ktt01_Dev_Input')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ktt01_Dev_Output')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Tumbling Trigger Copy BlobStorage Dev_1 changed to 20')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy BlobStorage",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Check Input File",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "DS_ktt01_Dev_Input",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "DS_ktt01_Dev_Output",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Check Input File",
-						"type": "Validation",
-						"dependsOn": [
-							{
-								"activity": "Dev_1 changed to 6 minutes",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "DS_ktt01_Dev_Input",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"timeout": "7.00:00:00",
-							"sleep": 10
-						}
-					},
-					{
-						"name": "Dev_1 changed to 6 minutes",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 3600
 						}
 					}
 				],
@@ -454,7 +406,209 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/dev_trigger')]",
+			"name": "[concat(parameters('factoryName'), '/Tumbling Trigger Copy BlobStorage Dev_1 changed to 20')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy BlobStorage",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Check Input File",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_ktt01_Dev_Input",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_ktt01_Dev_Output",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Check Input File",
+						"type": "Validation",
+						"dependsOn": [
+							{
+								"activity": "Dev_1 changed to 6 minutes",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "DS_ktt01_Dev_Input",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"timeout": "7.00:00:00",
+							"sleep": 10
+						}
+					},
+					{
+						"name": "Dev_1 changed to 6 minutes",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 3600
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-08-12T23:33:37Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_ktt01_Dev_Input')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ktt01_Dev_Output')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_parameter_IO_triggers')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_ktt01_Dev_Parm_Input",
+								"type": "DatasetReference",
+								"parameters": {
+									"InputFilename": {
+										"value": "@pipeline().parameters.pl_filename",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_ktt01_Dev_Parm_Output",
+								"type": "DatasetReference",
+								"parameters": {
+									"OutputFilename": {
+										"value": "@pipeline().parameters.pl_filename",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					}
+				],
+				"parameters": {
+					"pl_filename": {
+						"type": "string"
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_ktt01_Dev_Parm_Input')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ktt01_Dev_Parm_Output')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Even trigger')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -463,25 +617,24 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "Copy BlobStorage Dev_1 changed to 20",
+							"referenceName": "Event Trigger copy BlobStorage Dev_1 changed to 20_copy1",
 							"type": "PipelineReference"
 						},
 						"parameters": {}
 					}
 				],
-				"type": "ScheduleTrigger",
+				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 1,
-						"startTime": "2021-08-13T13:33:00Z",
-						"endTime": "2021-08-13T13:53:00Z",
-						"timeZone": "UTC"
-					}
+					"blobPathBeginsWith": "/dev-input/blobs/Aus",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('Even trigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Copy BlobStorage Dev_1 changed to 20')]"
+				"[concat(variables('factoryId'), '/pipelines/Event Trigger copy BlobStorage Dev_1 changed to 20_copy1')]"
 			]
 		},
 		{
@@ -518,7 +671,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Even trigger')]",
+			"name": "[concat(parameters('factoryName'), '/dev_trigger')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -527,24 +680,25 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "Event Trigger copy BlobStorage Dev_1 changed to 20_copy1",
+							"referenceName": "Copy BlobStorage Dev_1 changed to 20",
 							"type": "PipelineReference"
 						},
 						"parameters": {}
 					}
 				],
-				"type": "BlobEventsTrigger",
+				"type": "ScheduleTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/dev-input/blobs/Aus",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('Even trigger_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 1,
+						"startTime": "2021-08-13T13:33:00Z",
+						"endTime": "2021-08-13T13:53:00Z",
+						"timeZone": "UTC"
+					}
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Event Trigger copy BlobStorage Dev_1 changed to 20_copy1')]"
+				"[concat(variables('factoryId'), '/pipelines/Copy BlobStorage Dev_1 changed to 20')]"
 			]
 		}
 	]
