@@ -5,12 +5,20 @@
 			"referenceName": "LS_ktt01_Dev_BlobStorage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"DS_Input_Parm": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Aus_IND_Sales.csv",
+				"fileName": {
+					"value": "@dataset().DS_Input_Parm",
+					"type": "Expression"
+				},
 				"container": "dev-input"
 			},
 			"columnDelimiter": ",",
