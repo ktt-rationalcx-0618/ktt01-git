@@ -15,6 +15,10 @@
 			"type": "string",
 			"defaultValue": "https://ktt01-dev-kv-00.vault.azure.net/"
 		},
+		"Even trigger_properties_pl_parameter_IO_triggers_parameters_pl_filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().pl_filename"
+		},
 		"Even trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/9ff82384-d93c-4e95-8e8f-4d5b507efa11/resourceGroups/ktt01-dev-rg/providers/Microsoft.Storage/storageAccounts/ktt01devsa"
@@ -51,6 +55,9 @@
 					},
 					"LS_ktt01_Dev_BlobStorage_properties_typeProperties_connectionString_secretName": {
 						"value": "[parameters('LS_ktt01_Dev_BlobStorage_properties_typeProperties_connectionString_secretName')]"
+					},
+					"Even trigger_properties_pl_parameter_IO_triggers_parameters_pl_filename": {
+						"value": "[parameters('Even trigger_properties_pl_parameter_IO_triggers_parameters_pl_filename')]"
 					},
 					"Even trigger_properties_typeProperties_scope": {
 						"value": "[parameters('Even trigger_properties_typeProperties_scope')]"

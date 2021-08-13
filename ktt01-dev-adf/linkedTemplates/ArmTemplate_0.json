@@ -15,6 +15,10 @@
 			"type": "string",
 			"defaultValue": "ktt01-dev-SA-AccessSecret"
 		},
+		"Even trigger_properties_pl_parameter_IO_triggers_parameters_pl_filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().pl_filename"
+		},
 		"Even trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/9ff82384-d93c-4e95-8e8f-4d5b507efa11/resourceGroups/ktt01-dev-rg/providers/Microsoft.Storage/storageAccounts/ktt01devsa"
@@ -621,11 +625,21 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "pl_parameter_IO_triggers",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"pl_filename": "[parameters('Even trigger_properties_pl_parameter_IO_triggers_parameters_pl_filename')]"
+						}
 					}
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/dev-input/blobs/Aus",
+					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('Even trigger_properties_typeProperties_scope')]",
 					"events": [
@@ -634,7 +648,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Event Trigger copy BlobStorage Dev_1 changed to 20_copy1')]"
+				"[concat(variables('factoryId'), '/pipelines/Event Trigger copy BlobStorage Dev_1 changed to 20_copy1')]",
+				"[concat(variables('factoryId'), '/pipelines/pl_parameter_IO_triggers')]"
 			]
 		},
 		{
