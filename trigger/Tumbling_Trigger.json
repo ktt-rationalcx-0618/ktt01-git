@@ -5,7 +5,7 @@
 		"runtimeState": "Started",
 		"pipeline": {
 			"pipelineReference": {
-				"referenceName": "Delay 6 minutes copy BlobStorage Dev_1 changed to 20",
+				"referenceName": "Tumbling Trigger Copy BlobStorage Dev_1 changed to 20",
 				"type": "PipelineReference"
 			}
 		},
