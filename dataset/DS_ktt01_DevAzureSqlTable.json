@@ -1,0 +1,26 @@
+{
+	"name": "DS_ktt01_DevAzureSqlTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ktt01_dev_AzureSqlDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ProductName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ktt_sample"
+		}
+	}
+}
