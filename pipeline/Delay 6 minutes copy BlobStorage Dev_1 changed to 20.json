@@ -1,5 +1,5 @@
 {
-	"name": "Clone copy BlobStorage Dev_1 changed to 20",
+	"name": "Delay 6 minutes copy BlobStorage Dev_1 changed to 20",
 	"properties": {
 		"activities": [
 			{
@@ -72,7 +72,7 @@
 				"type": "Validation",
 				"dependsOn": [
 					{
-						"activity": "Dev_1 changed to 20",
+						"activity": "Dev_1 changed to 6 minutes",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -89,12 +89,12 @@
 				}
 			},
 			{
-				"name": "Dev_1 changed to 20",
+				"name": "Dev_1 changed to 6 minutes",
 				"type": "Wait",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"waitTimeInSeconds": 20
+					"waitTimeInSeconds": 3600
 				}
 			}
 		],
