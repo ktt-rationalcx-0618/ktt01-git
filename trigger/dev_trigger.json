@@ -9,6 +9,12 @@
 					"referenceName": "Copy BlobStorage Dev_1 changed to 20",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "Clone copy BlobStorage Dev_1 changed to 20",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
