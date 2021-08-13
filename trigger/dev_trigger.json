@@ -1,0 +1,25 @@
+{
+	"name": "dev_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Copy BlobStorage Dev_1 changed to 20",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2021-08-13T13:33:00Z",
+				"endTime": "2021-08-13T13:53:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

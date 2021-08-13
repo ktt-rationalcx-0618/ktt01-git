@@ -1,0 +1,24 @@
+{
+	"name": "Even trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Event Trigger copy BlobStorage Dev_1 changed to 20_copy1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/dev-input/blobs/Aus",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/9ff82384-d93c-4e95-8e8f-4d5b507efa11/resourceGroups/ktt01-dev-rg/providers/Microsoft.Storage/storageAccounts/ktt01devsa",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
