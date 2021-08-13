@@ -13,13 +13,11 @@
 		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/dev-input/blobs/Aus",
-			"blobPathEndsWith": "csv",
+			"blobPathBeginsWith": "/dev-input/blobs/",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/9ff82384-d93c-4e95-8e8f-4d5b507efa11/resourceGroups/ktt01-dev-rg/providers/Microsoft.Storage/storageAccounts/ktt01devsa",
 			"events": [
-				"Microsoft.Storage.BlobCreated",
-				"Microsoft.Storage.BlobDeleted"
+				"Microsoft.Storage.BlobCreated"
 			]
 		}
 	}
