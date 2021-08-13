@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"InputFilename": {
+			"filename": {
 				"type": "string"
 			}
 		},
