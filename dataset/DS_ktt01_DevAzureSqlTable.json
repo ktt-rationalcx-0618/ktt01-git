@@ -22,5 +22,6 @@
 			"schema": "dbo",
 			"table": "ktt_sample"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
