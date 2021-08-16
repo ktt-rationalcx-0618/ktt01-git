@@ -3,7 +3,16 @@
 	"properties": {
 		"type": "WranglingDataFlow",
 		"typeProperties": {
-			"sources": []
+			"sources": [
+				{
+					"name": "ds_powerquery",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  ds_powerquery",
+					"dataset": {
+						"referenceName": "ds_powerquery",
+						"type": "DatasetReference"
+					}
+				}
+			]
 		}
 	}
 }
