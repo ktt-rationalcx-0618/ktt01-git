@@ -11,14 +11,6 @@
 						"referenceName": "ds_powerquery",
 						"type": "DatasetReference"
 					}
-				},
-				{
-					"name": "ds_powerquery_copy1",
-					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  ds_powerquery_copy1",
-					"dataset": {
-						"referenceName": "ds_powerquery_copy1",
-						"type": "DatasetReference"
-					}
 				}
 			],
 			"script": "section Section1;\r\nshared ds_powerquery = let\r\n  AdfDoc = AzureStorage.DataLakeContents(\"https://davidsynapseadls001.dfs.core.windows.net/david-test-blob-01/test_Table_01.csv\"),\r\n  Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv])\r\nin\r\n  Csv;\r\nshared UserQuery = let\r\n  Source = ds_powerquery\r\nin\r\n  Source;\r\n"
