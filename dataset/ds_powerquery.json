@@ -1,0 +1,29 @@
+{
+	"name": "ds_powerquery",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_powerQuery_ADLS2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "test_Table_01.csv",
+				"fileSystem": "david-test-blob-01"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}
